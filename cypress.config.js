@@ -1,12 +1,12 @@
 const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
-  e2e: {
-    baseUrl: 'https://google.com',
-    // Вимикаємо пошук файлу support, щоб усунути помилку
-    supportFile: false,
-    setupNodeEvents(_on, _config) {
-      // місце для плагінів
-    },
-  },
+	e2e: {
+		baseUrl: 'https://google.com', // Замініть на сайт, який будете тестувати
+		viewportWidth: 1920,
+		viewportHeight: 1080,
+		setupNodeEvents(on, config) {
+			// місце для плагінів
+		},
+	},
 });
