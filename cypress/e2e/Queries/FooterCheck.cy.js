@@ -1,4 +1,4 @@
-// import { loginAsGuest } from './helpers/login.cy.js';
+// import { loginAsGuest } from './helpers/LogIn.cy.js';
 
 // describe('Footer social links', () => {
 //   beforeEach(() => {
@@ -45,7 +45,7 @@
 //   });
 // });
 
-import { loginAsGuest } from './helpers/login.cy.js';
+import { loginAsGuest } from '../helpers/login.cy.js';
 
 describe('Footer social links', () => {
   const socialLinks = [

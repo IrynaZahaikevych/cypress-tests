@@ -1,4 +1,4 @@
-// import { loginAsGuest } from './helpers/login.cy.js';
+// import { loginAsGuest } from './helpers/LogIn.cy.js';
 // describe('Header queries', () => {
 //   beforeEach(() => {
 //     loginAsGuest();
@@ -33,7 +33,7 @@
 //   });
 // });
 
-import { loginAsGuest } from './helpers/login.cy.js';
+import { loginAsGuest } from '../helpers/login.cy.js';
 
 describe('Header queries', () => {
   const navItems = [
