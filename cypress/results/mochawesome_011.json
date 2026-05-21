@@ -1,0 +1,167 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2026-05-21T10:09:31.947Z",
+    "end": "2026-05-21T10:09:32.145Z",
+    "duration": 198,
+    "testsRegistered": 4,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 3,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "d11788d2-97c7-420c-b719-13d37b85f88e",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Commands\\GarageCheck.cy.js",
+      "file": "cypress\\e2e\\Commands\\GarageCheck.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3a65bf93-29b6-40ca-a412-1d3dcc4b6b9d",
+          "title": "Garage: Add Car Validation and Creation",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Step 1: Should open pop-up and verify layout elements",
+              "fullTitle": "Garage: Add Car Validation and Creation Step 1: Should open pop-up and verify layout elements",
+              "timedOut": null,
+              "duration": 133,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_GaragePage.garagePage.addCarBtn.click();\n_GaragePage.garagePage.modalTitle.should('be.visible').and('have.text', 'Add a car');\n_GaragePage.garagePage.closeIcon.should('be.visible');\n_GaragePage.garagePage.cancelBtn.should('be.visible');\n_GaragePage.garagePage.submitAddCarBtn.should('be.disabled');",
+              "err": {
+                "message": "CypressError: `cy.visit()` must be called with a `url` or an `options` object containing a `url` as its 1st argument\n\nhttps://on.cypress.io/visit\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Garage: Add Car Validation ...`",
+                "estack": "CypressError: `cy.visit()` must be called with a `url` or an `options` object containing a `url` as its 1st argument\n\nhttps://on.cypress.io/visit\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Garage: Add Car Validation ...`\n    at Context.visit (http://localhost:63699/__cypress/runner/cypress_runner.js:131230:70)\n    at wrapped (http://localhost:63699/__cypress/runner/cypress_runner.js:138084:43)\nFrom Your Spec Code:\n    at loginAsGuest (webpack://cypress-tests/./cypress/e2e/helpers/LogIn.cy.js:4:5)\n    at Context.eval (webpack://cypress-tests/./cypress/e2e/Commands/GarageCheck.cy.js:6:17)",
+                "diff": null
+              },
+              "uuid": "d65e3f7e-46bb-4ae8-aba2-b09fd5887088",
+              "parentUUID": "3a65bf93-29b6-40ca-a412-1d3dcc4b6b9d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Step 2: Should trigger validation error on empty mileage field",
+              "fullTitle": "Garage: Add Car Validation and Creation Step 2: Should trigger validation error on empty mileage field",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_GaragePage.garagePage.addCarBtn.click();\n_GaragePage.garagePage.mileageInput.focus().blur();\n_GaragePage.garagePage.mileageError.should('be.visible').and('have.text', 'Mileage cost required');\n_GaragePage.garagePage.mileageInput.should('have.css', 'border-color').and('eq', _GaragePage.garagePage.redColor);\n_GaragePage.garagePage.submitAddCarBtn.should('be.disabled');",
+              "err": {},
+              "uuid": "31ff65a1-4bc2-476a-be72-bbaf93ce3110",
+              "parentUUID": "3a65bf93-29b6-40ca-a412-1d3dcc4b6b9d",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Step 3: Should close pop-up when Cancel button is clicked",
+              "fullTitle": "Garage: Add Car Validation and Creation Step 3: Should close pop-up when Cancel button is clicked",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_GaragePage.garagePage.addCarBtn.click();\n_GaragePage.garagePage.cancelBtn.click();\n_GaragePage.garagePage.modalTitle.should('not.exist');",
+              "err": {},
+              "uuid": "84b5eeea-6c30-496f-a7af-e34e5779815c",
+              "parentUUID": "3a65bf93-29b6-40ca-a412-1d3dcc4b6b9d",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Step 4: Should successfully add a new car and display it in the garage",
+              "fullTitle": "Garage: Add Car Validation and Creation Step 4: Should successfully add a new car and display it in the garage",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_GaragePage.garagePage.addCarBtn.click();\nconst brand = 'BMW';\nconst model = 'X5';\nconst mileage = '150';\n_GaragePage.garagePage.fillCarForm(brand, model, mileage);\n_GaragePage.garagePage.submitAddCarBtn.should('not.be.disabled').click();\n_GaragePage.garagePage.modalTitle.should('not.exist');\n_GaragePage.garagePage.carItemName.first().should('be.visible').and('contain', `${brand} ${model}`);",
+              "err": {},
+              "uuid": "4b32f72c-fa67-4da0-82e2-9707b0136dbc",
+              "parentUUID": "3a65bf93-29b6-40ca-a412-1d3dcc4b6b9d",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "d65e3f7e-46bb-4ae8-aba2-b09fd5887088"
+          ],
+          "pending": [],
+          "skipped": [
+            "31ff65a1-4bc2-476a-be72-bbaf93ce3110",
+            "84b5eeea-6c30-496f-a7af-e34e5779815c",
+            "4b32f72c-fa67-4da0-82e2-9707b0136dbc"
+          ],
+          "duration": 133,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

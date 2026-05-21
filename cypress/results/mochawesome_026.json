@@ -1,0 +1,171 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 2,
+    "pending": 0,
+    "failures": 2,
+    "start": "2026-05-21T11:07:56.424Z",
+    "end": "2026-05-21T11:08:10.907Z",
+    "duration": 14483,
+    "testsRegistered": 4,
+    "passPercent": 50,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "9e9cc930-3f22-49ce-a19b-040a9379d88c",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Commands\\GarageCheck.cy.js",
+      "file": "cypress\\e2e\\Commands\\GarageCheck.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "53924d65-0753-4e14-b744-a60e6dafe074",
+          "title": "Garage: Add Car Validation and Creation",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Step 1: Should open pop-up and verify layout elements",
+              "fullTitle": "Garage: Add Car Validation and Creation Step 1: Should open pop-up and verify layout elements",
+              "timedOut": null,
+              "duration": 4012,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_GaragePage.garagePage.addCarBtn.click();\n_GaragePage.garagePage.modalTitle.should('be.visible').and('have.text', 'Add a car');\n_GaragePage.garagePage.closeIcon.should('be.visible');\n_GaragePage.garagePage.cancelBtn.should('be.visible');\n_GaragePage.garagePage.submitAddCarBtn.should('be.disabled');",
+              "err": {},
+              "uuid": "24a593ab-3d9b-4a14-8ff3-20de7bace13f",
+              "parentUUID": "53924d65-0753-4e14-b744-a60e6dafe074",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Step 2: Should trigger validation error on empty mileage field",
+              "fullTitle": "Garage: Add Car Validation and Creation Step 2: Should trigger validation error on empty mileage field",
+              "timedOut": null,
+              "duration": 6208,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_GaragePage.garagePage.addCarBtn.click();\n_GaragePage.garagePage.mileageInput.focus().blur();\n_GaragePage.garagePage.mileageError.should('be.visible').and('have.text', 'Mileage cost required');\n_GaragePage.garagePage.mileageInput.should('have.css', 'border-color').and('eq', _GaragePage.garagePage.redColor);\n_GaragePage.garagePage.submitAddCarBtn.should('be.disabled');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#addCarMileage ~ .invalid-feedback`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#addCarMileage ~ .invalid-feedback`, but never found it.\n    at Context.eval (webpack://cypress-tests/./cypress/e2e/Commands/GarageCheck.cy.js:26:28)",
+                "diff": null
+              },
+              "uuid": "c74b37c0-a021-4dcd-9079-41fab37a2517",
+              "parentUUID": "53924d65-0753-4e14-b744-a60e6dafe074",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Step 3: Should close pop-up when Cancel button is clicked",
+              "fullTitle": "Garage: Add Car Validation and Creation Step 3: Should close pop-up when Cancel button is clicked",
+              "timedOut": null,
+              "duration": 2340,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_GaragePage.garagePage.addCarBtn.click();\n_GaragePage.garagePage.cancelBtn.click();\n_GaragePage.garagePage.modalTitle.should('not.exist');",
+              "err": {},
+              "uuid": "62a89ab0-2a42-4fc9-a992-29a1c2f38652",
+              "parentUUID": "53924d65-0753-4e14-b744-a60e6dafe074",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Step 4: Should successfully add a new car and display it in the garage",
+              "fullTitle": "Garage: Add Car Validation and Creation Step 4: Should successfully add a new car and display it in the garage",
+              "timedOut": null,
+              "duration": 1702,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_GaragePage.garagePage.addCarBtn.click();\nconst brand = 'BMW';\nconst model = 'X5';\nconst mileage = '150';\n_GaragePage.garagePage.fillCarForm(brand, model, mileage);\n_GaragePage.garagePage.submitAddCarBtn.should('not.be.disabled').click();\n_GaragePage.garagePage.modalTitle.should('not.exist');\n_GaragePage.garagePage.carItemName.first().should('be.visible').and('contain', `${brand} ${model}`);",
+              "err": {
+                "message": "TypeError: _GaragePage.garagePage.fillCarForm is not a function",
+                "estack": "TypeError: _GaragePage.garagePage.fillCarForm is not a function\n    at Context.eval (webpack://cypress-tests/./cypress/e2e/Commands/GarageCheck.cy.js:44:15)",
+                "diff": null
+              },
+              "uuid": "3e2ef5a5-5eda-4b83-8641-6571b2a8bf1b",
+              "parentUUID": "53924d65-0753-4e14-b744-a60e6dafe074",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "24a593ab-3d9b-4a14-8ff3-20de7bace13f",
+            "62a89ab0-2a42-4fc9-a992-29a1c2f38652"
+          ],
+          "failures": [
+            "c74b37c0-a021-4dcd-9079-41fab37a2517",
+            "3e2ef5a5-5eda-4b83-8641-6571b2a8bf1b"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 14262,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}
