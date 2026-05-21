@@ -1,87 +1,68 @@
 import { openRegistrationForm } from '../helpers/Registration.cy.js';
+import { registrationPage } from '../PageObjects/RegistrationPage.js';
 
 describe('Validation Last Name field', () => {
-  const lastNameInput = '#signupLastName';
-  const redColor = 'rgb(220, 53, 69)';
-
   beforeEach(() => {
     openRegistrationForm();
   });
 
-  const typeData = (text) => {
-    cy.get(lastNameInput).clear().type(text).blur();
-  };
-
   it('Mandatory: Yes — "Last Name is required"', () => {
-    cy.get(lastNameInput).focus().blur();
-
-    cy.get(`${lastNameInput} ~ .invalid-feedback`)
-      .should('be.visible')
-      .and('have.text', 'Last name required');
-
-    cy.get(lastNameInput).should('have.css', 'border-color').and('eq', redColor);
+    registrationPage.lastNameInput.focus().blur();
+    registrationPage.verifyValidationError(
+      registrationPage.lastNameInput,
+      '#signupLastName',
+      'Last name required'
+    );
   });
 
   it('Wrong data — "Last Name is invalid"', () => {
-    typeData('Іван');
-
-    cy.get(`${lastNameInput} ~ .invalid-feedback`)
-      .should('be.visible')
-      .and('have.text', 'Last name is invalid');
-
-    cy.get(lastNameInput).should('have.css', 'border-color').and('eq', redColor);
+    registrationPage.typeField(registrationPage.lastNameInput, 'Іван');
+    registrationPage.verifyValidationError(
+      registrationPage.lastNameInput,
+      '#signupLastName',
+      'Last name is invalid'
+    );
   });
 
   it('Wrong length min — "Last Name has to be from 2 to 20 characters long"', () => {
-    typeData('A');
-
-    cy.get(`${lastNameInput} ~ .invalid-feedback`)
-      .should('be.visible')
-      .and('have.text', 'Last name has to be from 2 to 20 characters long');
-
-    cy.get(lastNameInput).should('have.css', 'border-color').and('eq', redColor);
+    registrationPage.typeField(registrationPage.lastNameInput, 'A');
+    registrationPage.verifyValidationError(
+      registrationPage.lastNameInput,
+      '#signupLastName',
+      'Last name has to be from 2 to 20 characters long'
+    );
   });
 
   it('Wrong length max — "Last Name has to be from 2 to 20 characters long"', () => {
-    const longText = 'A'.repeat(21);
-    typeData(longText);
-
-    cy.get(`${lastNameInput} ~ .invalid-feedback`)
-      .should('be.visible')
-      .and('have.text', 'Last name has to be from 2 to 20 characters long');
-
-    cy.get(lastNameInput).should('have.css', 'border-color').and('eq', redColor);
+    registrationPage.typeField(registrationPage.lastNameInput, 'A'.repeat(21));
+    registrationPage.verifyValidationError(
+      registrationPage.lastNameInput,
+      '#signupLastName',
+      'Last name has to be from 2 to 20 characters long'
+    );
   });
 
   it('Trim check: Field with spaces only — "Last Name is invalid"', () => {
-    typeData('   ');
-
-    cy.get(`${lastNameInput} ~ .invalid-feedback`)
-      .should('be.visible')
-      .and('have.text', 'Last name is invalid');
-
-    cy.get(lastNameInput).should('have.css', 'border-color').and('eq', redColor);
+    registrationPage.typeField(registrationPage.lastNameInput, '   ');
+    registrationPage.verifyValidationError(
+      registrationPage.lastNameInput,
+      '#signupLastName',
+      'Last name is invalid'
+    );
   });
 
   it('Trim check: Valid name with spaces along borders — Success', () => {
-    typeData('  Ab  ');
-
-    cy.get(`${lastNameInput} ~ .invalid-feedback`).should('not.exist');
-    cy.get(lastNameInput).should('not.have.css', 'border-color', redColor);
+    registrationPage.typeField(registrationPage.lastNameInput, '  Ab  ');
+    registrationPage.verifyValidationSuccess(registrationPage.lastNameInput, '#signupLastName');
   });
 
   it('Boundary check: Min length 2 characters — Success', () => {
-    typeData('Ab');
-
-    cy.get(`${lastNameInput} ~ .invalid-feedback`).should('not.exist');
-    cy.get(lastNameInput).should('not.have.css', 'border-color', redColor);
+    registrationPage.typeField(registrationPage.lastNameInput, 'Ab');
+    registrationPage.verifyValidationSuccess(registrationPage.lastNameInput, '#signupLastName');
   });
 
   it('Boundary check: Max length 20 characters — Success', () => {
-    const validMaxText = 'A'.repeat(20);
-    typeData(validMaxText);
-
-    cy.get(`${lastNameInput} ~ .invalid-feedback`).should('not.exist');
-    cy.get(lastNameInput).should('not.have.css', 'border-color', redColor);
+    registrationPage.typeField(registrationPage.lastNameInput, 'A'.repeat(20));
+    registrationPage.verifyValidationSuccess(registrationPage.lastNameInput, '#signupLastName');
   });
 });
