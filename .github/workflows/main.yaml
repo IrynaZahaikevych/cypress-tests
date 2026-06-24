@@ -25,10 +25,12 @@ jobs:
           CYPRESS_guestUser: 'guest'
           CYPRESS_guestPassword: 'welcome2qauto'
 
+  # ЗАВДАННЯ 2: Запуск Playwright у Docker
   playwright-run:
     runs-on: ubuntu-latest
     container:
-      image: ://microsoft.com
+      # Додаємо повний шлях docker.io/ у назву образу, щоб уникнути помилки формату
+      image: docker.io/://microsoft.com
 
     steps:
       - name: Checkout repository
