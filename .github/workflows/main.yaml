@@ -28,7 +28,7 @@ jobs:
   playwright-run:
     runs-on: ubuntu-latest
     container:
-      image: playwright:v1.39.0-jammy
+      image: ://microsoft.com
 
     steps:
       - name: Checkout repository
