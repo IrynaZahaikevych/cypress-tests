@@ -1,0 +1,186 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 4,
+    "pending": 0,
+    "failures": 1,
+    "start": "2026-05-21T11:44:58.069Z",
+    "end": "2026-05-21T11:45:18.830Z",
+    "duration": 20761,
+    "testsRegistered": 5,
+    "passPercent": 80,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "5b7dd0b8-11f7-4a30-bbb5-0ea030141a92",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Commands\\GarageCheck.cy.js",
+      "file": "cypress\\e2e\\Commands\\GarageCheck.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e8dada95-5391-4646-9bda-16d591eb0818",
+          "title": "Garage: Add Car Validation and Creation",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Step 1: Should open pop-up and verify layout elements",
+              "fullTitle": "Garage: Add Car Validation and Creation Step 1: Should open pop-up and verify layout elements",
+              "timedOut": null,
+              "duration": 5088,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_GaragePage.garagePage.addCarBtn.click();\n_GaragePage.garagePage.modalTitle.should('be.visible').and('have.text', 'Add a car');\n_GaragePage.garagePage.closeIcon.should('be.visible');\n_GaragePage.garagePage.cancelBtn.should('be.visible');\n_GaragePage.garagePage.submitAddCarBtn.should('be.disabled');",
+              "err": {},
+              "uuid": "9af733fa-7edb-49d1-874d-e828c37bcc51",
+              "parentUUID": "e8dada95-5391-4646-9bda-16d591eb0818",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Step 2: Should trigger validation error on empty mileage field",
+              "fullTitle": "Garage: Add Car Validation and Creation Step 2: Should trigger validation error on empty mileage field",
+              "timedOut": null,
+              "duration": 2803,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_GaragePage.garagePage.addCarBtn.click();\n_GaragePage.garagePage.mileageInput.type('1').clear().blur();\n_GaragePage.garagePage.mileageError.should('be.visible').and('have.text', 'Mileage cost required');\n_GaragePage.garagePage.mileageInput.should('have.css', 'border-color').and('eq', _GaragePage.garagePage.redColor);\n_GaragePage.garagePage.submitAddCarBtn.should('be.disabled');",
+              "err": {},
+              "uuid": "d931ebf4-bfee-48a1-9c07-5302ee24138d",
+              "parentUUID": "e8dada95-5391-4646-9bda-16d591eb0818",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Step 3: Should close pop-up when Cancel button is clicked",
+              "fullTitle": "Garage: Add Car Validation and Creation Step 3: Should close pop-up when Cancel button is clicked",
+              "timedOut": null,
+              "duration": 2194,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_GaragePage.garagePage.addCarBtn.click();\n_GaragePage.garagePage.cancelBtn.click();\n_GaragePage.garagePage.modalTitle.should('not.exist');",
+              "err": {},
+              "uuid": "42e2da48-163c-4eae-b253-2c7adccf09f4",
+              "parentUUID": "e8dada95-5391-4646-9bda-16d591eb0818",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Step 4: Should close pop-up when Close (X) icon is clicked",
+              "fullTitle": "Garage: Add Car Validation and Creation Step 4: Should close pop-up when Close (X) icon is clicked",
+              "timedOut": null,
+              "duration": 2957,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_GaragePage.garagePage.addCarBtn.click();\n_GaragePage.garagePage.closeIcon.click();\n_GaragePage.garagePage.modalTitle.should('not.exist');",
+              "err": {},
+              "uuid": "940a8af4-7e3b-4978-a0cf-5a1e9196dd4b",
+              "parentUUID": "e8dada95-5391-4646-9bda-16d591eb0818",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Step 5: Should successfully add a new car and display it in the garage",
+              "fullTitle": "Garage: Add Car Validation and Creation Step 5: Should successfully add a new car and display it in the garage",
+              "timedOut": null,
+              "duration": 7459,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_GaragePage.garagePage.addCarBtn.click();\nconst brand = 'BMW';\nconst model = 'X5';\n// Генеруємо унікальний пробіг, щоб тест не зчитував старі машини з акаунта\nconst uniqueMileage = (Math.floor(Math.random() * 90000) + 1000).toString();\n// Заповнюємо форму через Page Object метод\n_GaragePage.garagePage.fillCarForm(brand, model, uniqueMileage);\n_GaragePage.garagePage.submitAddCarBtn.should('not.be.disabled').click();\n// Звертаємося до класу модалки напряму, щоб уникнути помилки undefined\n// Якщо вискочить алерт \"Not authenticated\" — поп-ап залишиться на екрані і тест впаде тут!\ncy.get('.modal-content').should('not.exist');\n// Ці перевірки виконаються, тільки якщо багу немає і модалка закрилася\n_GaragePage.garagePage.carItemName.should('be.visible').and('contain', `${brand} ${model}`);\ncy.get('.car-item').should('contain', uniqueMileage);",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: expected '[ <li.car-item>, 5 more... ]' to contain '78703'",
+                "estack": "AssertionError: Timed out retrying after 4000ms: expected '[ <li.car-item>, 5 more... ]' to contain '78703'\n    at Context.eval (webpack://cypress-tests/./cypress/e2e/Commands/GarageCheck.cy.js:65:24)",
+                "diff": null
+              },
+              "uuid": "5cbfaec3-f736-49fe-bd59-cb6e6004eeb4",
+              "parentUUID": "e8dada95-5391-4646-9bda-16d591eb0818",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "9af733fa-7edb-49d1-874d-e828c37bcc51",
+            "d931ebf4-bfee-48a1-9c07-5302ee24138d",
+            "42e2da48-163c-4eae-b253-2c7adccf09f4",
+            "940a8af4-7e3b-4978-a0cf-5a1e9196dd4b"
+          ],
+          "failures": [
+            "5cbfaec3-f736-49fe-bd59-cb6e6004eeb4"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 20501,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}
