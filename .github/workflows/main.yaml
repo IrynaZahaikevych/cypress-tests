@@ -28,7 +28,7 @@ jobs:
   playwright-run:
     runs-on: ubuntu-latest
     container:
-      image: ://microsoft.com
+      image: node:20-bookworm
 
     steps:
       - name: Checkout repository
@@ -37,7 +37,7 @@ jobs:
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      - name: Install Playwright Browsers
+      - name: Install Playwright Browsers and Dependencies
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
