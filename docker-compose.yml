@@ -1,0 +1,8 @@
+services:
+  cypress-tests:
+    build: .
+    volumes:
+      - .:/e2e
+    environment:
+      - CYPRESS_guestUser=guest
+      - CYPRESS_guestPassword=welcome2qauto

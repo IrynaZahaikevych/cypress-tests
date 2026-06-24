@@ -1,0 +1,167 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2026-05-21T10:16:06.587Z",
+    "end": "2026-05-21T10:16:06.929Z",
+    "duration": 342,
+    "testsRegistered": 4,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 3,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "dbfa3b6d-b66d-4d75-867e-b202bd28e7c5",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Commands\\GarageCheck.cy.js",
+      "file": "cypress\\e2e\\Commands\\GarageCheck.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "7276c68d-4de4-4560-9bb9-3feaf8d7732c",
+          "title": "Garage: Add Car Validation and Creation",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Step 1: Should open pop-up and verify layout elements",
+              "fullTitle": "Garage: Add Car Validation and Creation Step 1: Should open pop-up and verify layout elements",
+              "timedOut": null,
+              "duration": 270,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_GaragePage.garagePage.addCarBtn.click();\n_GaragePage.garagePage.modalTitle.should('be.visible').and('have.text', 'Add a car');\n_GaragePage.garagePage.closeIcon.should('be.visible');\n_GaragePage.garagePage.cancelBtn.should('be.visible');\n_GaragePage.garagePage.submitAddCarBtn.should('be.disabled');",
+              "err": {
+                "message": "CypressError: `cy.visit()` failed trying to load:\n\n/\n\nWe failed looking for this file at the path:\n\n/Users/admin/aqa-advanced/cypress-tests/cypress-tests/cypress-tests/\n\nThe internal Cypress web server responded with:\n\n  > 404: Not Found\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Garage: Add Car Validation ...`",
+                "estack": "CypressError: `cy.visit()` failed trying to load:\n\n/\n\nWe failed looking for this file at the path:\n\n/Users/admin/aqa-advanced/cypress-tests/cypress-tests/cypress-tests/\n\nThe internal Cypress web server responded with:\n\n  > 404: Not Found\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Garage: Add Car Validation ...`\n    at <unknown> (http://localhost:49949/__cypress/runner/cypress_runner.js:131591:76)\n    at visitFailedByErr (http://localhost:49949/__cypress/runner/cypress_runner.js:131006:12)\n    at <unknown> (http://localhost:49949/__cypress/runner/cypress_runner.js:131574:13)\n    at tryCatcher (http://localhost:49949/__cypress/runner/cypress_runner.js:1830:23)\n    at Promise._settlePromiseFromHandler (http://localhost:49949/__cypress/runner/cypress_runner.js:1542:31)\n    at Promise._settlePromise (http://localhost:49949/__cypress/runner/cypress_runner.js:1599:18)\n    at Promise._settlePromise0 (http://localhost:49949/__cypress/runner/cypress_runner.js:1644:10)\n    at Promise._settlePromises (http://localhost:49949/__cypress/runner/cypress_runner.js:1720:18)\n    at _drainQueueStep (http://localhost:49949/__cypress/runner/cypress_runner.js:2430:12)\n    at _drainQueue (http://localhost:49949/__cypress/runner/cypress_runner.js:2423:9)\n    at Async._drainQueues (http://localhost:49949/__cypress/runner/cypress_runner.js:2439:5)\n    at Async.drainQueues (http://localhost:49949/__cypress/runner/cypress_runner.js:2309:14)\nFrom Your Spec Code:\n    at loginAsGuest (webpack://cypress-tests/./cypress/e2e/helpers/LogIn.cy.js:19:5)\n    at Context.eval (webpack://cypress-tests/./cypress/e2e/Commands/GarageCheck.cy.js:6:17)",
+                "diff": null
+              },
+              "uuid": "ca7a42c9-4152-4f59-b254-d2e934d2eeb0",
+              "parentUUID": "7276c68d-4de4-4560-9bb9-3feaf8d7732c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Step 2: Should trigger validation error on empty mileage field",
+              "fullTitle": "Garage: Add Car Validation and Creation Step 2: Should trigger validation error on empty mileage field",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_GaragePage.garagePage.addCarBtn.click();\n_GaragePage.garagePage.mileageInput.focus().blur();\n_GaragePage.garagePage.mileageError.should('be.visible').and('have.text', 'Mileage cost required');\n_GaragePage.garagePage.mileageInput.should('have.css', 'border-color').and('eq', _GaragePage.garagePage.redColor);\n_GaragePage.garagePage.submitAddCarBtn.should('be.disabled');",
+              "err": {},
+              "uuid": "7ab32ce6-e9a8-469d-8bd0-f5f8133b04ae",
+              "parentUUID": "7276c68d-4de4-4560-9bb9-3feaf8d7732c",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Step 3: Should close pop-up when Cancel button is clicked",
+              "fullTitle": "Garage: Add Car Validation and Creation Step 3: Should close pop-up when Cancel button is clicked",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_GaragePage.garagePage.addCarBtn.click();\n_GaragePage.garagePage.cancelBtn.click();\n_GaragePage.garagePage.modalTitle.should('not.exist');",
+              "err": {},
+              "uuid": "18408e27-eb46-4807-ae3b-b27f5d6d162f",
+              "parentUUID": "7276c68d-4de4-4560-9bb9-3feaf8d7732c",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Step 4: Should successfully add a new car and display it in the garage",
+              "fullTitle": "Garage: Add Car Validation and Creation Step 4: Should successfully add a new car and display it in the garage",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_GaragePage.garagePage.addCarBtn.click();\nconst brand = 'BMW';\nconst model = 'X5';\nconst mileage = '150';\n_GaragePage.garagePage.fillCarForm(brand, model, mileage);\n_GaragePage.garagePage.submitAddCarBtn.should('not.be.disabled').click();\n_GaragePage.garagePage.modalTitle.should('not.exist');\n_GaragePage.garagePage.carItemName.first().should('be.visible').and('contain', `${brand} ${model}`);",
+              "err": {},
+              "uuid": "e54073f0-87a2-4adf-8c1f-d9514ea6f8f9",
+              "parentUUID": "7276c68d-4de4-4560-9bb9-3feaf8d7732c",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "ca7a42c9-4152-4f59-b254-d2e934d2eeb0"
+          ],
+          "pending": [],
+          "skipped": [
+            "7ab32ce6-e9a8-469d-8bd0-f5f8133b04ae",
+            "18408e27-eb46-4807-ae3b-b27f5d6d162f",
+            "e54073f0-87a2-4adf-8c1f-d9514ea6f8f9"
+          ],
+          "duration": 270,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}
