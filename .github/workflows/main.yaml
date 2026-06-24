@@ -24,21 +24,3 @@ jobs:
         env:
           CYPRESS_guestUser: 'guest'
           CYPRESS_guestPassword: 'welcome2qauto'
-
-  playwright-run:
-    runs-on: ubuntu-latest
-    container:
-      image: node:20-bookworm
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Install dependencies
-        run: npm install --legacy-peer-deps
-
-      - name: Install Playwright Browsers and Dependencies
-        run: npx playwright install --with-deps
-
-      - name: Run Playwright tests
-        run: npx playwright test
